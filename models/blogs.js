@@ -12,6 +12,9 @@ const blogsSchema = new Schema({
         type: Date,
         required: true,
     },
+    imagePath: {
+        type: String
+    },
     description: {
         type: String,
         required: true,

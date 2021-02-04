@@ -18,17 +18,24 @@
         </div>
 
         <div class="card m-4">
-            <% blogs.forEach(blog => {%>
-            <div class="card-body m-4" style="border:1px solid black">
-                <h3 class="card-title"><%= blog.title %></h3>
-                <h6><%= blog.created.toLocaleString() %></h6>
-                <div class="card m-2 p-2"><%= blog.description %></div>
-                <form action="/<%= blog.slug %>?_method=delete" method="post">
-                    <a href="/<%= blog.slug %>" class="btn btn-info">Read more</a>
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
-            </div>
-            <% })%>
+            <% blogs.forEach(blog=> {%>
+                <div class="card-body m-4" style="border:1px solid black">
+                    <h3 class="card-title">
+                        <%= blog.title %>
+                    </h3>
+                    <h6>
+                        <%= blog.created.toLocaleString() %>
+                    </h6>
+                    <img src="http://localhost:5000/<%=blog.imagePath%>" width="800" height="400" />
+                    <div class=" card m-2 p-2">
+                        <%= blog.description %>
+                    </div>
+                    <form action="/<%= blog.slug %>?_method=delete" method="post">
+                        <a href="/<%= blog.slug %>" class="btn btn-info">Read more</a>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+                <% })%>
         </div>
     </div>
 </body>

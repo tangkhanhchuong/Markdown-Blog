@@ -4,6 +4,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const cors = require("cors")
 
 const indexRouter = require('./routes/index');
 
@@ -12,6 +13,7 @@ const PORT = process.env.PORT || 5000;
 
 //to use delete route in html
 app.use(methodOverride('_method'));
+app.use(cors());
 
 // view engine setup
 app.use(express.static(path.join(__dirname, 'public')));

@@ -1,10 +1,12 @@
 const express = require('express');
 const marked = require("marked");
 
-const router = express.Router();
 const Blog = require("../models/blogs");
+const { uploadFile } = require("../public/javascripts/helpers/upload.helper");
+const { generatePath } = require("../public/javascripts/helpers/path.generator");
 
-/* GET home page. */
+const router = express.Router();
+
 router.get("/new", (req, res, next) => {
   res.render("newblog");
 })
@@ -13,7 +15,7 @@ router.get('/', async (req, res, next) => {
   res.render("index", { blogs: blogs })
 });
 
-router.post("/new", async (req, res, next) => {
+router.post("/new", uploadFile, async (req, res, next) => {
   const { title, description, content } = req.body;
 
   if (!title || !content) {
@@ -24,6 +26,7 @@ router.post("/new", async (req, res, next) => {
   const blog = new Blog({
     title: title,
     created: new Date(),
+    imagePath: req.file ? generatePath(req.file.path) : null,
     description: description,
     content: marked(content) || content,
   });

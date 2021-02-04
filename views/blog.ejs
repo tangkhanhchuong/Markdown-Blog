@@ -13,18 +13,21 @@
 <body>
     <div class="container-sm">
         <div class="container-sm" style="text-align: center;">
-            <h1 class="card-title"><%= blog.title %></h1>
-            <!-- <a href="/new" class="btn btn-success">New Blog</a> -->
+            <h1 class="card-title">
+                <%= blog.title %>
+            </h1>
         </div>
-
         <div class="card m-4">
             <div class="m-3">
-                <h6><%= blog.created.toLocaleString() %></h6>
+                <h6>
+                    <%= blog.created.toLocaleString() %>
+                </h6>
                 <a href="/" class="btn btn-info">All blogs</a>
                 <btn class="btn btn-success">Edit</btn>
                 <btn class="btn btn-danger">Delete</btn>
             </div>
             <hr>
+            <img src="http://localhost:5000/<%=blog.imagePath%>" alt="blog bg">
             <div class="card-body m-4" style="border:1px solid black">
                 <%- blog.content %>
             </div>
